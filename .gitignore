@@ -1,0 +1,29 @@
+# 모든 파일 무시
+*
+
+# 디렉토리 형식 포함
+!*/
+
+# 특정 파일 형식 포함
+!*.c
+!*.cpp
+!*.java
+!*.py
+
+# 특정 파일 포함
+!시간복잡도.jpeg
+!아스키코드.png
+!알고리즘 정리.ipynb
+!README.md
+!.gitignore
+
+# 특정 파일 제외
+FileCount.py
+dataStructures.c
+fio.cpp
+
+#테스트 파일 제외
+test.c
+test.cpp
+test.java
+test.py
