@@ -6,15 +6,19 @@
 ### Python
 - 백준 : https://www.acmicpc.net/user/chany0207
 - 현재 티어 : P5 (https://solved.ac/profile/chany0207)
+![Solved.ac](https://mazassumnida.wtf/api/v2/generate_badge?boj=chany0207)
 
 ### JAVA
 - 백준 : https://www.acmicpc.net/user/mcj0207
 - 현재 티어 : G4 (https://solved.ac/profile/mcj0207)
+![Solved.ac](https://mazassumnida.wtf/api/v2/generate_badge?boj=mcj0207)
 
 ### C++
 - 백준 : https://www.acmicpc.net/user/mcj8592
 - 현재 티어 : S1 (https://solved.ac/profile/mcj8592)
+![Solved.ac](https://mazassumnida.wtf/api/v2/generate_badge?boj=mcj8592)
 
 ### C언어
 - 백준 : https://www.acmicpc.net/user/chany8592
 - 현재 티어 : S4 (https://solved.ac/profile/chany8592)
+![Solved.ac](https://mazassumnida.wtf/api/v2/generate_badge?boj=chany8592)
