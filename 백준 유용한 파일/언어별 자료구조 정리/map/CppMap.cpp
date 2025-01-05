@@ -13,7 +13,7 @@ int main() {
 
     if (count.count("msf") == 0) cout << "없음\n";
 
-    for (const auto& pair : count) {
+    for (auto pair : count) {
         cout << "Key : " << pair.first << "  Value : " << pair.second << "\n";
     }
 }

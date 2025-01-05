@@ -2,48 +2,59 @@ import java.util.*;
 
 public class JavaSort {
     public static void main(String[] args) {
-        int oneArray[] = { 6, 3, 5, 2, 7, 9, 1, 4, 8 };
+        // 정수
+        System.out.println("정수\n-------------------------");
+
+        List<Integer> oneArray = Arrays.asList(6, 3, 5, 2, 7, 9, 1, 4, 8);
 
         printOneArray(oneArray);
-        Arrays.sort(oneArray);
+        oneArray.sort(null);
         printOneArray(oneArray);
 
-        int twoArray[][] = { { 1, 4, 6 }, { 8, 3, 2 }, { 2, 5, 9 } };
+        List<List<Integer>> twoArray = Arrays.asList(
+            Arrays.asList(1, 4, 6),
+            Arrays.asList(8, 3, 2),
+            Arrays.asList(2, 5, 9)
+        );
 
         printTwoArray(twoArray);
-        Arrays.sort(twoArray, (a,b) -> {return a[2] - b[2];});
+        twoArray.sort((a,b) -> a.get(1) - b.get(1));
         printTwoArray(twoArray);
 
-        String oneArrayStr[] = { "tefdsb", "fkfn", "Bdsk", "asf", "yssnf" };
 
-        printOneArrayStr(oneArrayStr);
-        Arrays.sort(oneArrayStr, (a, b) -> {
-            if (a.length() == b.length()) {
-                for (int i = 0; i < a.length(); i++) {
-                    if (a.charAt(i) != b.charAt(i)) return a.charAt(i) - b.charAt(i);
-                }
-            }
-            return a.length()-b.length();
+        // 문자열
+        System.out.println("문자열\n-------------------------");
+
+        List<String> oneArrayStr = Arrays.asList("test", "als", "민찬", "djg", "car", "asfnd", "asfldnvladsd");
+
+        printOneArray(oneArrayStr);
+        oneArrayStr.sort((a, b) -> a.length() - b.length());
+        printOneArray(oneArrayStr);
+
+        List<List<String>> twoArrayStr = Arrays.asList(
+            Arrays.asList("test", "alsaads", "민찬"),
+            Arrays.asList("car", "dogsdf", "big"),
+            Arrays.asList("hor", "sdka", "fgg")
+        );
+
+        printTwoArray(twoArrayStr);
+        twoArrayStr.sort((a,b) -> {
+            if (a.get(1).length() == b.get(1).length()) return a.get(1).compareTo(b.get(1));
+            return a.get(1).length() - b.get(1).length();
         });
-        printOneArrayStr(oneArrayStr);
+        printTwoArray(twoArrayStr);
     }
 
-    static void printOneArray(int oneArray[]) {
-        for (int i : oneArray) System.out.print(i + " ");
-        System.out.println();
+    static <T> void printOneArray(List<T> oneArray) {
+        for (T element : oneArray) System.out.print(element + " ");
+        System.out.println("\n-------------------------");
     }
 
-    static void printTwoArray(int twoArray[][]) {
-        System.out.println("-------------------------");
-        for (int[] row : twoArray) {
-            for (int i : row) System.out.print(i + " ");
+    static <T> void printTwoArray(List<List<T>> twoArray) {
+        for (List<T> row : twoArray) {
+            for (T element : row) System.out.print(element + " ");
             System.out.println();
         }
         System.out.println("-------------------------");
-    }
-
-    static void printOneArrayStr(String oneArrayStr[]) {
-        for (String str : oneArrayStr) System.out.print(str + " ");
-        System.out.println();
     }
 }
