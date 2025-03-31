@@ -1,20 +1,22 @@
-li = []
+import sys
+input = sys.stdin.readline
+
+cnt = 0
+
 n = int(input())
-for i in range(n):
-    word = input()
-    word_list = []
-    for b in range(len(word)):
-        word_list.append(word[b])
-    forcount = []
-    for a in range(len(word_list)):
-        z = word_list[a]
-        if z in forcount:
-            if word_list[a-1] == z:
-                forcount.append(z)
-            else:
-                pass
+for _ in range(n):
+    word = input().rstrip()
+    count = [0]*26
+    flag = True
+    count[ord(word[0])-97] = 1
+    for i in range(1, len(word)):
+        z = word[i]
+        if count[ord(z)-97] == 1:
+            if word[i-1] != z:
+                flag = False
+                break
         else:
-            forcount.append(z)
-    if len(word_list) == len(forcount):
-        li.append(word)
-print(len(li))
+            count[ord(z)-97] = 1
+    if (flag): cnt += 1
+
+print(cnt)
