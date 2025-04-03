@@ -1,66 +1,50 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-#define MAX_N 697114
+#include <stdlib.h>
 
-typedef struct
-{
-  char name[6];
-  int company;
-} Staff;
+char enter[1000000][6];
+char leave[1000000][6];
 
 int compare(const void *a, const void *b)
 {
-  return strcmp(((Staff *)a)->name, ((Staff *)b)->name);
-}
-
-int find(Staff staffs[], char *key, int size)
-{
-  int s = 0, e = size - 1;
-  while (s <= e)
-  {
-    int mid = (s + e) / 2;
-    int cmp = strcmp(staffs[mid].name, key);
-    if (cmp == 0)
-      return mid;
-    if (cmp < 0)
-      s = mid + 1;
-    if (cmp > 0)
-      e = mid - 1;
-  }
-  return -1;
+  return strcmp((char*) b, (char*) a);
 }
 
 int main()
 {
-  Staff staffs[MAX_N];
-  int size = 0;
+  int n, idx_e = 0, idx_l = 0;
+  char name[6], action[6];
 
-  int n;
   scanf("%d", &n);
+
   for (int i = 0; i < n; i++)
   {
-    char name[6], log[6];
-    scanf("%s %s", name, log);
-    int idx = find(staffs, name, size);
-    if (idx != -1)
+    scanf("%s %s", name, action);
+    if (strcmp(action, "enter") == 0)
+      strcpy(enter[idx_e++], name);
+    if (strcmp(action, "leave") == 0)
+      strcpy(leave[idx_l++], name);
+  }
+
+  qsort(enter, idx_e, sizeof(char) * 6, compare);
+  qsort(leave, idx_l, sizeof(char) * 6, compare);
+
+  int idx_ei = 0, idx_li = 0;
+  while (idx_ei < idx_e && idx_li < idx_l)
+  {
+    if (strcmp(enter[idx_ei], leave[idx_li]) == 0)
     {
-      staffs[idx].company = strcmp(log, "enter") == 0 ? 1 : 0;
+      idx_ei++;
+      idx_li++;
     }
     else
     {
-      strcpy(staffs[size].name, name);
-      staffs[size].company = strcmp(log, "enter") == 0 ? 1 : 0;
-      size++;
-      qsort(staffs, size, sizeof(Staff), compare);
+      printf("%s\n", enter[idx_ei++]);
     }
   }
 
-  for (int i = size - 1; i >= 0; i--)
+  while (idx_ei < idx_e)
   {
-    if (staffs[i].company == 1)
-    {
-      printf("%s\n", staffs[i].name);
-    }
+    printf("%s\n", enter[idx_ei++]);
   }
 }

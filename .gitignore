@@ -21,9 +21,7 @@
 FileCount.py
 dataStructures.c
 fio.cpp
+.vscode
 
 #테스트 파일 제외
-test.c
-test.cpp
-test.java
-test.py
+**/test*.*
