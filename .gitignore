@@ -18,10 +18,9 @@
 !.gitignore
 
 # 특정 파일 제외
-FileCount.py
 dataStructures.c
 fio.cpp
 .vscode
 
 #테스트 파일 제외
-**/test*.*
+**/test*
