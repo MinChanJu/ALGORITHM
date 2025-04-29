@@ -16,6 +16,8 @@
 !알고리즘 정리.ipynb
 !README.md
 !.gitignore
+!FileCount.ipynb
+!count.xlsx
 
 # 특정 파일 제외
 dataStructures.c
