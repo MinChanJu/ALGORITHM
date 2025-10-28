@@ -46,13 +46,10 @@ input = sys.stdin.readline
 C, N = map(int, input().split())
 costs = [tuple(map(int, input().split())) for _ in range(N)]
 
-costs.sort(key = lambda x: -x[1]/x[0])
-w, v = costs[-1]
-maxCnt = C + v - 1
-dp = [[float('inf')]*(maxCnt+1) for _ in range(N+1)] # dp[i][j]: i번째 요소까지 봤을 때 j의 인원을 가질 수 있는 최소 금액
+dp = [[float('inf')]*(C+1) for _ in range(N+1)] # dp[i][j]: i번째 요소까지 봤을 때 정확히 j의 인원을 가질 수 있는 최소 금액
 
 for i in range(1, N+1):
-  for j in range(1, maxCnt+1):
+  for j in range(1, C+1):
     w, v = costs[i-1]
     k = (j + v - 1) // v
     dp[i][j] = k * w
@@ -60,7 +57,4 @@ for i in range(1, N+1):
       k = (j - p + v - 1) // v
       dp[i][j] = min(dp[i-1][p] + w*k, dp[i][j])
 
-answer = float('inf')
-for j in range(C, maxCnt + 1):
-  if (answer > dp[N][j]): answer = dp[N][j]
-print(answer)
+print(dp[N][C])
